@@ -1,0 +1,16 @@
+{
+  "home": "الرئيسية",
+  "cart": "السلة",
+  "categories": "الأقسام",
+  "logoutConfirmation": "هل أنت متأكد من تسجيل الخروج؟",
+  "profile": "الملف الشخصي",
+  "cancel": "إلغاء",
+  "yes": "نعم",
+  "userLogin": "تسجيل الدخول",
+  "emailAddress": "البريد الإلكتروني",
+  "password": "الرقم السري",
+  "dontHaveAccount": "ليس لديك حساب؟",
+  "newAccount": "حساب جديد",
+  "enterYourEmail": "من فضلك أدخل البريد الإلكتروني الخاص بك",
+  "enterYourPassword": "من فضلك أدخل الرقم السري الخاص بك"
+}
