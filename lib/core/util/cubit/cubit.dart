@@ -54,10 +54,9 @@ class AppCubit extends Cubit<AppState> {
     emit(ThemeLoaded());
   }
 
-  bool arabic = false;
+
   void changeLanguage({required bool value}) async {
-    isRtl = value;
-    arabic = !arabic;
+    isRtl = !isRtl;
 
     sl<CacheHelper>().put('isRtl', isRtl);
     String translation = await rootBundle
