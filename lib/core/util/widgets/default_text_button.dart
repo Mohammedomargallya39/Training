@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class DefaultTextButton extends StatelessWidget {
   DefaultTextButton({Key? key,
     required this.text,
+    required this.fontFamily,
     required this.onPressed,
     required this.textColor,
     required this.fontSize,
@@ -10,6 +11,7 @@ class DefaultTextButton extends StatelessWidget {
 
   Function()? onPressed;
   String? text;
+  String? fontFamily;
   Color? textColor;
   double? fontSize;
 
@@ -21,6 +23,7 @@ class DefaultTextButton extends StatelessWidget {
         style: TextStyle(
           color: textColor,
           fontSize: fontSize,
+          fontFamily: fontFamily,
         )
         ),
     );

@@ -3,12 +3,14 @@ import 'package:flutter/cupertino.dart';
 class AppText extends StatelessWidget {
   AppText({Key? key,
     required this.text,
+    required this.fontFamily,
     required this.textColor,
     required this.textSize,
     required this.textWeight,
     this.textAlign,
   }) : super(key: key);
   String? text;
+  String? fontFamily;
   Color? textColor;
   double? textSize;
   FontWeight? textWeight;
@@ -22,6 +24,7 @@ class AppText extends StatelessWidget {
         color: textColor,
         fontSize: textSize,
         fontWeight: textWeight,
+        fontFamily: fontFamily,
       ),
     );
   }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 class DefaultButton extends StatelessWidget {
   DefaultButton({Key? key,
     required this.text,
+    required this.fontFamily,
     required this.onPressed,
     required this.containerColor,
     required this.textColor
@@ -14,6 +15,7 @@ class DefaultButton extends StatelessWidget {
   Function()? onPressed;
   Color? containerColor;
   Color? textColor;
+  String? fontFamily;
 
 
   @override
@@ -29,7 +31,8 @@ class DefaultButton extends StatelessWidget {
           onPressed: onPressed,
           child: Text(text!,
           style: TextStyle(
-            color: textColor
+            color: textColor,
+            fontFamily: fontFamily,
           ),
           ),
       ),
