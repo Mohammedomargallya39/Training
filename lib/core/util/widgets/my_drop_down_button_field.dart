@@ -46,83 +46,94 @@ class MyDropDownButton extends StatelessWidget {
 
     return BlocBuilder<AppCubit,AppState>(
       builder: (context, state) {
-        return DropdownButtonFormField(
-          decoration: InputDecoration(
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                8.0,
-              ),
-              borderSide: BorderSide(
-                color: HexColor(mainColor),
-                width: 1.0,
-              ),
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            space5Vertical(context),
+            Text(
+              appTranslation(context).select,
+              style: Theme.of(context).textTheme.subtitle1,
             ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                8.0,
+            space10Vertical(context),
+            DropdownButtonFormField(
+              decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                    8.0,
+                  ),
+                  borderSide: BorderSide(
+                    color: HexColor(mainColor),
+                    width: 1.0,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                    8.0,
+                  ),
+                  borderSide: BorderSide(
+                    color: HexColor(darkGreyColor),
+                    width: 1.0,
+                  ),
+                ),
+                errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                    8.0,
+                  ),
+                  borderSide: const BorderSide(
+                    color: Colors.red,
+                    width: 1.0,
+                  ),
+                ),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                    8.0,
+                  ),
+                  borderSide: BorderSide(
+                    color: HexColor(darkGreyColor),
+                    width: 1.0,
+                  ),
+                ),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(
+                    8.0,
+                  ),
+                  borderSide: const BorderSide(
+                    color: Colors.red,
+                    width: 1.0,
+                  ),
+                ),
               ),
-              borderSide: BorderSide(
-                color: HexColor(darkGreyColor),
-                width: 1.0,
+              validator: (value) {
+                if (value == governments[0]) {
+                  return appTranslation(context).select;
+                }
+                return null;
+              },
+              value: selectGovernoment,
+              dropdownColor: Colors.white,
+              alignment: Alignment.center,
+              icon: const Icon(
+                Icons.arrow_drop_down ,
+                color: Colors.grey,
               ),
+              style:  Theme.of(context).textTheme.subtitle2!.copyWith(
+                  color: Colors.orangeAccent,
+                  fontSize: 16
+              ),
+              onChanged: (String? value)
+              {
+                selectGovernoment =  value! ;
+              },
+              items: governments.map<DropdownMenuItem<String>>((String value)
+              {
+                return
+                  DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+              }).toList(),
             ),
-            errorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                8.0,
-              ),
-              borderSide: const BorderSide(
-                color: Colors.red,
-                width: 1.0,
-              ),
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                8.0,
-              ),
-              borderSide: BorderSide(
-                color: HexColor(darkGreyColor),
-                width: 1.0,
-              ),
-            ),
-            focusedErrorBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(
-                8.0,
-              ),
-              borderSide: const BorderSide(
-                color: Colors.red,
-                width: 1.0,
-              ),
-            ),
-          ),
-          validator: (value) {
-            if (value == governments[0]) {
-              return appTranslation(context).select;
-            }
-            return null;
-          },
-          value: selectGovernoment,
-          dropdownColor: Colors.white,
-          alignment: Alignment.center,
-          icon: const Icon(
-            Icons.arrow_drop_down ,
-            color: Colors.grey,
-          ),
-          style: const TextStyle(
-            color: Colors.orangeAccent,
-            fontSize: 16,
-          ),
-          onChanged: (String? value)
-          {
-            selectGovernoment =  value! ;
-          },
-          items: governments.map<DropdownMenuItem<String>>((String value)
-          {
-            return
-              DropdownMenuItem<String>(
-                value: value,
-                child: Text(value),
-              );
-          }).toList(),
+          ],
         );
       },
     );
