@@ -56,6 +56,7 @@ class MyDropDownButton extends StatelessWidget {
             ),
             space10Vertical(context),
             DropdownButtonFormField(
+              isExpanded: true,
               decoration: InputDecoration(
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(
@@ -102,6 +103,9 @@ class MyDropDownButton extends StatelessWidget {
                     width: 1.0,
                   ),
                 ),
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 20.0,
+                ),
               ),
               validator: (value) {
                 if (value == governments[0]) {
@@ -116,10 +120,7 @@ class MyDropDownButton extends StatelessWidget {
                 Icons.arrow_drop_down ,
                 color: Colors.grey,
               ),
-              style:  Theme.of(context).textTheme.subtitle2!.copyWith(
-                  color: Colors.orangeAccent,
-                  fontSize: 16
-              ),
+              style:  Theme.of(context).textTheme.subtitle2!,
               onChanged: (String? value)
               {
                 selectGovernoment =  value! ;
