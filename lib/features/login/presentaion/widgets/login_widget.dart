@@ -1,19 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hexcolor/hexcolor.dart';
 import 'package:training_app/core/util/widgets/my_button.dart';
 import 'package:training_app/core/util/widgets/my_form.dart';
-import 'package:training_app/core/util/widgets/my_text_button.dart';
+import 'package:training_app/core/util/widgets/my_rich_text.dart';
 import '../../../../core/util/constants.dart';
 import '../../../../core/util/cubit/cubit.dart';
 import '../../../../core/util/cubit/state.dart';
-import '../../../../core/util/widgets/default_button.dart';
 import '../../../../core/util/widgets/default_icon_button.dart';
-import '../../../../core/util/widgets/default_text_button.dart';
 import '../../../../core/util/widgets/logo.dart';
-import '../../../../core/util/widgets/text.dart';
-import '../../../../core/util/widgets/text_form_field.dart';
+import '../../../register/presentaion/pages/register_page.dart';
 
 class LoginWidget extends StatelessWidget {
   LoginWidget({Key? key}) : super(key: key);
@@ -70,28 +66,81 @@ class LoginWidget extends StatelessWidget {
                         ),
                         space40Vertical(context),
                         MyButton(
-                            onPressed: (){},
+                            onPressed: ()
+                            {
+                              if (formKey.currentState!.validate())
+                              {
+                                debugPrint("Form is valid");
+                              }
+                              else
+                              {
+                                debugPrint("Form is invalid");
+                              }
+                            },
                             text: appTranslation(context).userLogin,
                         ),
                         space20Vertical(context),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: [
+                        //     Expanded(
+                        //       child: Text(
+                        //         appTranslation(context).dontHaveAccount,
+                        //         overflow: TextOverflow.ellipsis,
+                        //         textAlign: TextAlign.end,
+                        //         maxLines: 1,
+                        //         style: Theme.of(context)
+                        //             .textTheme
+                        //             .subtitle1!
+                        //             .copyWith(fontWeight: FontWeight.w700),
+                        //       ),
+                        //     ),
+                        //     Expanded(
+                        //       child: MyTextButton(
+                        //         title: appTranslation(context).newAccount,
+                        //         textAlign: TextAlign.end,
+                        //       ),
+                        //     ),
+                        //   ],
+                        // ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Expanded(
-                              flex: 3,
-                              child: Text(
-                                appTranslation(context).dontHaveAccount,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .subtitle1!
-                                    .copyWith(fontWeight: FontWeight.w700),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: MyTextButton(
-                                title: appTranslation(context).newAccount,
-                              ),
+                            // RichText(
+                            //     text: TextSpan(
+                            //       children:
+                            //       [
+                            //         TextSpan(
+                            //           text: appTranslation(context).dontHaveAccount,
+                            //           style: Theme.of(context)
+                            //               .textTheme
+                            //               .subtitle1!
+                            //               .copyWith(fontWeight: FontWeight.w700),
+                            //         ),
+                            //         TextSpan(
+                            //           text: '  ${appTranslation(context).newAccount}',
+                            //           style: Theme.of(context)
+                            //               .textTheme
+                            //               .subtitle1!
+                            //               .copyWith(fontWeight: FontWeight.w700,
+                            //             color: HexColor(mainColor),
+                            //           ),
+                            //           recognizer: TapGestureRecognizer()..onTap =
+                            //               ()
+                            //           {
+                            //             debugPrint('new account pressed');
+                            //           },
+                            //         ),
+                            //       ]
+                            //     )
+                            // ),
+                            MyRichText(
+                                text: appTranslation(context).dontHaveAccount,
+                                textButton: appTranslation(context).newAccount,
+                                onTap: ()
+                                {
+                                  navigateTo(context, const RegisterPage());
+                                }
                             )
                           ],
                         ),
