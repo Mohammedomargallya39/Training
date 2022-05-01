@@ -6,45 +6,14 @@ import 'package:training_app/core/util/constants.dart';
 import 'package:training_app/core/util/cubit/cubit.dart';
 import 'package:training_app/core/util/cubit/state.dart';
 
+import '../../models/select_government_model.dart';
+
 class MyDropDownButton extends StatelessWidget {
   const MyDropDownButton({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
-    String selectGovernoment = appTranslation(context).select;
-    final List<String> governments =
-    [
-      appTranslation(context).select,
-      appTranslation(context).alexandria,
-      appTranslation(context).cairo,
-      appTranslation(context).giza,
-      appTranslation(context).qalyubia,
-      appTranslation(context).portSaid,
-      appTranslation(context).suez,
-      appTranslation(context).gharbia,
-      appTranslation(context).dakahlia,
-      appTranslation(context).ismailia,
-      appTranslation(context).asyut,
-      appTranslation(context).fayoum,
-      appTranslation(context).sharqia,
-      appTranslation(context).aswan,
-      appTranslation(context).beheira,
-      appTranslation(context).minya,
-      appTranslation(context).damietta,
-      appTranslation(context).luxor,
-      appTranslation(context).qena,
-      appTranslation(context).beniSuef,
-      appTranslation(context).sohag,
-      appTranslation(context).monufia,
-      appTranslation(context).redSea,
-      appTranslation(context).kafrElSheikh,
-      appTranslation(context).northSinai,
-      appTranslation(context).matruh,
-      appTranslation(context).newValley,
-    ];
-
-    return BlocBuilder<AppCubit,AppState>(
+    return BlocBuilder<AppCubit, AppState>(
       builder: (context, state) {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,6 +26,7 @@ class MyDropDownButton extends StatelessWidget {
             space10Vertical(context),
             DropdownButtonFormField(
               isExpanded: true,
+              isDense: false,
               decoration: InputDecoration(
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(
@@ -104,34 +74,37 @@ class MyDropDownButton extends StatelessWidget {
                   ),
                 ),
                 contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 20.0,
+                  horizontal: 16.0,
                 ),
               ),
               validator: (value) {
-                if (value == governments[0]) {
+                if (value ==  AppCubit.get(context).selectGovernment) {
                   return appTranslation(context).select;
                 }
                 return null;
               },
-              value: selectGovernoment,
+              value: AppCubit.get(context).selectGovernment,
               dropdownColor: Colors.white,
               alignment: Alignment.center,
               icon: const Icon(
-                Icons.arrow_drop_down ,
+                Icons.arrow_drop_down,
                 color: Colors.grey,
               ),
-              style:  Theme.of(context).textTheme.subtitle2!,
-              onChanged: (String? value)
-              {
-                selectGovernoment =  value! ;
+              style: Theme.of(context).textTheme.subtitle2!,
+              onChanged: (SelectGovernmentModel? value) {
+                AppCubit.get(context).changeSelectGovernment(
+                  value: value!,
+                );
               },
-              items: governments.map<DropdownMenuItem<String>>((String value)
-              {
-                return
-                  DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
+              items: cities.map<DropdownMenuItem<SelectGovernmentModel>>(
+                  (SelectGovernmentModel value) {
+                return DropdownMenuItem<SelectGovernmentModel>(
+                  value: value,
+                  child: Text(
+                    displayTranslatedText(
+                        context: context, ar: value.titleAr, en: value.titleEn),
+                  ),
+                );
               }).toList(),
             ),
           ],

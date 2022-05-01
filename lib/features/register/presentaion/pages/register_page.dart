@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:training_app/core/util/widgets/back_scaffold.dart';
 import 'package:training_app/features/register/presentaion/widgets/register_widget.dart';
 import '../../../../core/util/widgets/hide_keyboard_page.dart';
 import '../../../../core/util/widgets/home_scaffold.dart';
@@ -10,8 +11,8 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomeScaffold(
-      widget: HideKeyboardPage(
+    return BackScaffold(
+      body: HideKeyboardPage(
         child: RegisterWidget(),
       ),
     );

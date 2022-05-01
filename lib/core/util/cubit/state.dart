@@ -25,4 +25,6 @@ class BottomChanged extends AppState {}
 
 class UserChangeLoginSuffixState extends AppState {}
 
+class ChangeSelectGovernment extends AppState {}
+
 
