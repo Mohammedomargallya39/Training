@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
-
 import '../../error/exceptions.dart';
 import '../../util/constants.dart';
 import 'api_endpoints.dart';

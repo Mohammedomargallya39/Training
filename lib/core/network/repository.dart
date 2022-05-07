@@ -1,12 +1,18 @@
 
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:training_app/core/network/remote/api_endpoints.dart';
 import 'package:training_app/core/network/remote/dio_helper.dart';
 import '../error/exceptions.dart';
+import '../models/login_model.dart';
 import 'local/cache_helper.dart';
 
 abstract class Repository {
-
+  Future<Either<String, LoginModel>> login({
+    required String email,
+    required String password,
+  });
 }
 
 class RepoImplementation extends Repository {
@@ -18,7 +24,38 @@ class RepoImplementation extends Repository {
     required this.cacheHelper,
   });
 
+  @override
+  Future<Either<String, LoginModel>> login(
+      {
+        required String email,
+        required String password
+      }
+      ) async
+  { return _basicErrorHandling<LoginModel>(
+      onSuccess: () async
+      {
+        final Response f = await dioHelper.post(
+            url: loginUrl,
+            data: {
+              'email': email,
+              'password': password,
+            }
+        );
+
+        return LoginModel.fromJson(f.data);
+      },
+      onServerError: (exception) async
+  {
+    debugPrint(exception.message);
+    return exception.message;
+  }
+  );
+
+    // TODO: implement login
+    throw UnimplementedError();
+  }
 }
+
 
 extension on Repository {
 

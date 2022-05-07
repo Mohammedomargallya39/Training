@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:training_app/core/util/widgets/my_button.dart';
 import 'package:training_app/core/util/widgets/my_form.dart';
 import 'package:training_app/core/util/widgets/my_rich_text.dart';
@@ -14,13 +15,26 @@ import '../../../register/presentaion/pages/register_page.dart';
 class LoginWidget extends StatelessWidget {
   LoginWidget({Key? key}) : super(key: key);
 
-  var emailController = TextEditingController();
-  var passwordController = TextEditingController();
+  // var emailController = TextEditingController();
+  // var passwordController = TextEditingController();
   var formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AppCubit, AppState>(
+    return BlocConsumer<AppCubit, AppState>(
+      listener: (context, state) {
+        if (state is UserLoginError) {
+          Fluttertoast.showToast(
+            msg: state.message.toString(),
+          );
+        }
+
+        if(state is UserLoginSuccess) {
+          Fluttertoast.showToast(
+            msg: 'login success',
+          );
+        }
+      },
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(10.0),
@@ -51,7 +65,7 @@ class LoginWidget extends StatelessWidget {
                         space50Vertical(context),
                         MyForm(
                           label: appTranslation(context).emailAddress,
-                          controller: emailController,
+                          controller: AppCubit.get(context).emailController,
                           type: TextInputType.emailAddress,
                           error: appTranslation(context).enterYourEmail,
                           isPassword: false,
@@ -59,17 +73,20 @@ class LoginWidget extends StatelessWidget {
                         space10Vertical(context),
                         MyForm(
                           label: appTranslation(context).password,
-                          controller: passwordController,
+                          controller: AppCubit.get(context).passwordController,
                           type: TextInputType.visiblePassword,
                           error: appTranslation(context).enterYourPassword,
                           isPassword: true,
                         ),
                         space40Vertical(context),
                         MyButton(
+                            isLoading: state is UserLoginLoading,
                             onPressed: ()
                             {
                               if (formKey.currentState!.validate())
                               {
+                                FocusScope.of(context).requestFocus(FocusNode());
+                                AppCubit.get(context).userLogin();
                                 debugPrint("Form is valid");
                               }
                               else

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:training_app/core/models/login_model.dart';
 import 'package:training_app/core/models/select_government_model.dart';
 import 'package:training_app/core/util/cubit/state.dart';
 import '../../di/injection.dart';
@@ -204,4 +205,47 @@ class AppCubit extends Cubit<AppState> {
     selectGovernment = value;
     emit(ChangeSelectGovernment());
   }
+
+
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  LoginModel? loginModel;
+
+  void userLogin() async
+  {
+    emit(UserLoginLoading());
+
+    final login = await _repository.login(
+      email: emailController.text,
+      password: passwordController.text,
+    );
+
+    login.fold(
+            (failure)
+        {
+          emit(UserLoginError(
+              message: failure,
+          )
+          );
+          /// error in failure
+          debugPrint(failure.toString());
+        },
+            (data)
+          {
+
+            /// error in data
+
+            loginModel = data;
+             emit(UserLoginSuccess(
+                 token: loginModel!.token,
+             ));
+
+  }
+    );
+
+}
+
+
+
+
 }

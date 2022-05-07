@@ -27,4 +27,23 @@ class UserChangeLoginSuffixState extends AppState {}
 
 class ChangeSelectGovernment extends AppState {}
 
+class UserLoginLoading extends AppState {}
+
+class UserLoginSuccess extends AppState {
+  final String token;
+
+  UserLoginSuccess({
+    required this.token,
+  });
+}
+
+class UserLoginError extends AppState {
+  final String message;
+
+  UserLoginError({
+    required this.message,
+  });
+}
+
+
 

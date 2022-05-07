@@ -2,6 +2,7 @@
   "home": "Home",
   "cart": "Cart",
   "categories": "Categories",
+  "settings": "Settings",
   "logoutConfirmation": "Are you sure you want to logout?",
   "profile": "Profile",
   "cancel": "Cancel",
@@ -46,7 +47,19 @@
   "kafrElSheikh": "Kafr El-Sheikh",
   "northSinai": "North Sinai",
   "matruh": "Matruh",
-  "newValley": "New Valley"
+  "newValley": "New Valley",
+  "arabic": "Arabic",
+  "english": "English",
+  "mode": "Mode",
+  "darkMode": "Dark Mode",
+  "lightMode": "Light Mode",
+  "language": "Language",
+  "aboutUs": "About Us",
+  "connectUs": "Connect Us",
+  "help": "Help",
+  "logOut": "Log Out"
+
+
 
 
 
