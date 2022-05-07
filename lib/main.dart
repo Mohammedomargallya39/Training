@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:training_app/core/util/constants.dart';
 import 'package:training_app/features/login/presentaion/pages/login_page.dart';
-import 'package:training_app/features/setting/presentation/pages/settings_page.dart';
 import 'core/di/injection.dart' as di;
 import 'core/di/injection.dart';
 import 'core/network/local/cache_helper.dart';
@@ -12,6 +11,7 @@ import 'core/util/bloc_observer.dart';
 import 'core/util/cubit/cubit.dart';
 import 'core/util/cubit/state.dart';
 import 'features/main/pages/main_page.dart';
+import 'features/setting/presentation/pages/settings_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -96,8 +96,8 @@ class MyApp extends StatelessWidget {
             theme: AppCubit.get(context).lightTheme,
             // darkTheme: AppCubit.get(context).darkTheme,
             home:
-            //const SettingsPage(),
-            //const LoginScreen(),
+            // const SettingsPage(),
+            // const LoginScreen(),
             const MainPageScreen(),
             //token != null ? const MainPageScreen() :const LoginScreen() ,
           );
