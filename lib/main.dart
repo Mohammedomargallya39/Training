@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:training_app/core/util/constants.dart';
 import 'package:training_app/features/login/presentaion/pages/login_page.dart';
+import 'package:training_app/features/setting/presentation/pages/settings_page.dart';
 import 'core/di/injection.dart' as di;
 import 'core/di/injection.dart';
 import 'core/network/local/cache_helper.dart';
@@ -9,6 +11,7 @@ import 'core/network/remote/api_endpoints.dart';
 import 'core/util/bloc_observer.dart';
 import 'core/util/cubit/cubit.dart';
 import 'core/util/cubit/state.dart';
+import 'features/main/pages/main_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,6 +43,10 @@ void main() async {
 
   String translation = await rootBundle
       .loadString('assets/translations/${isRtl ? 'ar' : 'en'}.json');
+
+  token = await sl<CacheHelper>().get('token');
+
+  debugPrintFullText('My Current Token => $token');
 
 
   runApp(MyApp(
@@ -73,8 +80,7 @@ class MyApp extends StatelessWidget {
             ..setThemes(
               dark: isDark,
               rtl: isRtl,
-            )
-            ..setTranslation(
+            )..setTranslation(
               translation: translation,
             ),
         ),
@@ -82,14 +88,18 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<AppCubit, AppState>(
         builder: (context, state) {
           return MaterialApp(
-            title: 'Aliforas',
+            title: 'training_app',
             debugShowCheckedModeBanner: false,
             themeMode: AppCubit.get(context).isDark
                 ? ThemeMode.dark
                 : ThemeMode.light,
             theme: AppCubit.get(context).lightTheme,
             // darkTheme: AppCubit.get(context).darkTheme,
-            home:  LoginScreen() ,
+            home:
+            //const SettingsPage(),
+            //const LoginScreen(),
+            const MainPageScreen(),
+            //token != null ? const MainPageScreen() :const LoginScreen() ,
           );
         },
       ),

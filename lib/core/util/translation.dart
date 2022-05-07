@@ -2,6 +2,7 @@ class TranslationModel {
   late String home;
   late String cart;
   late String categories;
+  late String settings;
   late String logoutConfirmation;
   late String profile;
   late String cancel;
@@ -48,6 +49,16 @@ class TranslationModel {
   late String matruh;
   late String newValley;
 
+  late String arabic;
+  late String english;
+  late String mode;
+  late String lightMode;
+  late String darkMode;
+  late String language;
+  late String aboutUs;
+  late String connectUs;
+  late String help;
+  late String logOut;
 
 
 
@@ -57,6 +68,7 @@ class TranslationModel {
     home = json['home'];
     cart = json['cart'];
     categories = json['categories'];
+    settings = json['settings'];
     logoutConfirmation = json['logoutConfirmation'];
     profile = json['profile'];
     cancel = json['cancel'];
@@ -102,6 +114,19 @@ class TranslationModel {
     northSinai = json['northSinai'];
     matruh = json['matruh'];
     newValley = json['newValley'];
+    arabic = json['arabic'];
+    english = json['english'];
+    mode = json['mode'];
+    darkMode = json['darkMode'];
+    lightMode = json['lightMode'];
+    language = json['language'];
+    aboutUs = json['aboutUs'];
+    connectUs = json['connectUs'];
+    help = json['help'];
+    logOut = json['logOut'];
+
+
+
 
 
   }
@@ -110,6 +135,7 @@ class TranslationModel {
         'home': home,
         'cart': cart,
         'categories': categories,
+        'settings': settings,
         'logoutConfirmation': logoutConfirmation,
         'profile': profile,
         'cancel': cancel,
@@ -155,6 +181,17 @@ class TranslationModel {
         'northSinai': northSinai,
         'matruh': matruh,
         'newValley': newValley,
+        'arabic': arabic,
+        'english': english,
+        'mode': mode,
+        'lightMode': lightMode,
+        'darkMode': darkMode,
+        'language': language,
+        'aboutUs': aboutUs,
+        'connectUs': connectUs,
+        'help': help,
+        'logOut': logOut,
+
 
 
 

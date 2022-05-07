@@ -40,18 +40,41 @@ class HomeScaffold extends StatelessWidget {
               //   centerTitle: false,
               //   titleSpacing: 20.0,
               // ),
-              body: widget,
-              floatingActionButton: DefaultIconButton(
-                icon: Icons.language,
-                onPressed: () {
-                  AppCubit.get(context).changeLanguage(value:
-                  AppCubit
-                      .get(context)
-                      .isRtl);
-                },
+              appBar: AppBar(
+                leading: IconButton(
+                  onPressed: ()
+                  {
+                  },
+                  icon: Icon(
+                    Icons.menu,
+                    color: HexColor(mainColor),
+                  ),
+                ),
+                actions: [
+                  IconButton(
+                      onPressed: ()
+                      {
+
+                      },
+                      icon: const Icon(Icons.search),
+                      color: HexColor(mainColor),
+                  ),
+                ],
+                centerTitle: false,
+                titleSpacing: 20.0,
               ),
-              floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
-              // drawer: const Drawer(),
+              body: widget,
+              // floatingActionButton: DefaultIconButton(
+              //   icon: Icons.language,
+              //   onPressed: () {
+              //     AppCubit.get(context).changeLanguage(value:
+              //     AppCubit
+              //         .get(context)
+              //         .isRtl);
+              //   },
+              // ),
+              // floatingActionButtonLocation: FloatingActionButtonLocation.endTop,
+               drawer: const Drawer(),
             ),
           ),
         );

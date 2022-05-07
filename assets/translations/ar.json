@@ -2,6 +2,7 @@
   "home": "الرئيسية",
   "cart": "السلة",
   "categories": "الأقسام",
+  "settings": "الإعدادات",
   "logoutConfirmation": "هل أنت متأكد من تسجيل الخروج؟",
   "profile": "الملف الشخصي",
   "cancel": "إلغاء",
@@ -46,7 +47,17 @@
   "kafrElSheikh": "كفر الشيخ",
   "northSinai": "شمال سيناء",
   "matruh": "مرسي مطروح",
-  "newValley": "الوادي الجديد"
+  "arabic": "اللغة العربية",
+  "english": "اللغة الإنجليزية",
+  "mode": "الوضع",
+  "darkMode": "الوضع الداكن",
+  "lightMode": "الوضع الساطع",
+  "language": "اللغة",
+  "aboutUs": "معلومات عنا",
+  "connectUs": "تواصل معنا",
+  "help": "مساعدة",
+  "logOut": "تسجيل الخروج"
+
 
 
 
